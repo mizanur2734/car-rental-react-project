@@ -14,7 +14,7 @@ const Navbar = () => {
       <header className="bg-white relative z-20">
         <nav className="flex justify-between items-center md:px-8 px-4 mx-auto py-4">
           <div>
-            <h3 className="text-3xl font-bold">Car Rental</h3>
+            <h3 className="md:text-3xl text-2xl font-bold">Car Rental</h3>
           </div>
 
           {/* Mobile & Desktop Menu (hidden on desktop) */}
@@ -23,7 +23,7 @@ const Navbar = () => {
               menuOpen ? "max-h-60 " : "max-h-0 "
             }`}
           >
-            <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-6 py-4 w-full justify-center font-bold text-xl">
+            <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 md:py-4 w-full justify-center font-bold md:text-xl text-sm">
               <li>
                 <a href="#">Product</a>
               </li>
@@ -41,20 +41,20 @@ const Navbar = () => {
 
           {/* Sign In & Toggle Icon */}
           <div className="flex items-center gap-2">
-            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec] hidden md:block">
+            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec] hidden md:block cursor-pointer">
               Sign In
             </button>
             <div className="md:hidden">
               {menuOpen ? (
                 <RxCross2
                   onClick={onToggleMenu}
-                  size={30}
+                  size={28}
                   className="cursor-pointer"
                 />
               ) : (
                 <CiMenuFries
                   onClick={onToggleMenu}
-                  size={30}
+                  size={28}
                   className="cursor-pointer"
                 />
               )}
