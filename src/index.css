@@ -9,3 +9,43 @@
     "wdth" 100,
     "GRAD" 0;
 }
+
+/*  */
+.wave {
+  position: absolute;
+  bottom: 0;
+  width: 200%;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  animation: wave 8s linear infinite;
+}
+
+.wave1 {
+  left: -50%;
+  animation-delay: 0s;
+}
+
+.wave2 {
+  left: -70%;
+  animation-delay: 2s;
+  opacity: 0.5;
+}
+
+.wave3 {
+  left: -90%;
+  animation-delay: 4s;
+  opacity: 0.3;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(25%) translateY(10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}

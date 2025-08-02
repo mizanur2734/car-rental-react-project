@@ -17,7 +17,7 @@ const AboutUs = () => {
           Driven by customer satisfaction and reliability. We ensure every ride
           is comfortable, convenient, and on time.
         </p>
-        <button className="px-[26px] py-[10px] border-2 border-[#ffa600c6] mt-6 rounded-md hover:bg-[#ffa60091]">Get Started</button>
+        <button className="px-[26px] py-[10px] border-2 border-[#ffa600c6] cursor-pointer mt-6 rounded-md hover:bg-[#ffa60091]">Get Started</button>
       </div>
      </div>
     </div>
