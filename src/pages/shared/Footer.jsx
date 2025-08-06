@@ -6,7 +6,7 @@ const LinkSection = ({ title = "Important Links", links = [] }) => (
   <div className="md:pl-10 md:text-lg space-y-2 md:space-y-3">
     <h3 className="text-[20px] md:text-[24px] font-bold mt-5 md:mt-0">{title}</h3>
     {links.map((link, idx) => (
-      <div key={idx} className="flex items-center gap-2 hover:text-[#FF6347]">
+      <div key={idx} className="flex items-center gap-2 cursor-pointer hover:text-[#FF6347]">
         <FaAngleRight />
         <p>{link}</p>
       </div>
@@ -26,7 +26,7 @@ const Footer = () => {
           </p>
           <h4 className="text-lg">Noida, Uttar Pradesh</h4>
           <h5 className="text-lg">+91 123456789</h5>
-          <div className="flex gap-4 text-2xl mt-2">
+          <div className="flex gap-4 text-2xl md:text-4xl  mt-2">
             <FaInstagram />
             <IoLogoFacebook />
             <FaLinkedin />

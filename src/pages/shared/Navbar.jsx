@@ -1,66 +1,114 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CiMenuFries } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") === "light" ? "light" : "night"
+  );
 
-  const onToggleMenu = () => {
+  const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handleThemeChange = (e) => {
+    const newTheme = e.target.checked ? "night" : "light";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
+    document.querySelector("html").setAttribute("data-theme", newTheme);
+  };
+
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const navLinks = [
+    { name: "Product", to: "/product" },
+    { name: "Service", to: "/service" },
+    { name: "Pricing", to: "/pricing" },
+    { name: "Contact", to: "/contact" },
+  ];
+
   return (
-    <div className="roboto-serif-font bg-white shadow-md">
-      <header className="bg-white relative z-20">
-        <nav className="flex justify-between items-center md:px-8 px-4 mx-auto py-4">
+    <div className="roboto-serif-font bg-base-100 shadow-md text-base-content">
+      <header className="w-full fixed z-20 top-0 left-0 bg-base-100 shadow-md">
+        <nav className="flex justify-between items-center max-w-7xl mx-auto py-4 px-4 md:px-8">
+          {/* Logo */}
           <div>
-            <h3 className="md:text-3xl text-2xl font-bold">Car Rental</h3>
+            <h3 className="text-2xl md:text-3xl font-semibold">Car Rental</h3>
           </div>
 
-          {/* Mobile & Desktop Menu (hidden on desktop) */}
-          <div
-            className={`md:static absolute md:min-h-fit bg-white left-0 top-full w-full md:w-auto flex items-center px-5 z-10 overflow-hidden transition-all duration-500 ease-in-out ${
-              menuOpen ? "max-h-60 " : "max-h-0 "
-            }`}
-          >
-            <ul className="flex md:flex-row flex-col md:items-center md:gap-8 gap-4 md:py-4 w-full justify-center font-bold md:text-xl text-sm">
-              <li>
-                <a href="#">Product</a>
-              </li>
-              <li>
-                <a href="#">Service</a>
-              </li>
-              <li>
-                <a href="#">Pricing</a>
-              </li>
-              <li>
-                <a href="#">Contact</a>
-              </li>
-            </ul>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex gap-10 items-center">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200 ${
+                    isActive ? "text-[#ffa600]" : ""
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            ))}
           </div>
 
-          {/* Sign In & Toggle Icon */}
-          <div className="flex items-center gap-2">
-            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec] hidden md:block cursor-pointer">
+          {/* Right Side */}
+          <div className="flex items-center gap-3">
+            {/* Theme Toggle */}
+            <label className="flex items-center cursor-pointer gap-2">
+              <input
+                type="checkbox"
+                className="toggle theme-controller"
+                onChange={handleThemeChange}
+                checked={theme === "night"}
+              />
+              {/* <span className="text-sm hidden md:inline">
+                {theme === "night" ? "Dark" : "Light"}
+              </span> */}
+            </label>
+
+            {/* Sign In */}
+            <button className="bg-[#a6c1ee] text-white px-5 py-2 rounded-full hover:bg-[#87acec] hidden md:block text-base font-semibold">
               Sign In
             </button>
+
+            {/* Mobile Menu Icon */}
             <div className="md:hidden">
               {menuOpen ? (
-                <RxCross2
-                  onClick={onToggleMenu}
-                  size={28}
-                  className="cursor-pointer"
-                />
+                <RxCross2 onClick={toggleMenu} size={28} className="cursor-pointer" />
               ) : (
-                <CiMenuFries
-                  onClick={onToggleMenu}
-                  size={28}
-                  className="cursor-pointer"
-                />
+                <CiMenuFries onClick={toggleMenu} size={28} className="cursor-pointer" />
               )}
             </div>
           </div>
         </nav>
+
+        {/* Mobile Dropdown Menu */}
+        <div
+          className={`md:hidden flex flex-col gap-4 px-4 py-4 transition-all bg-base-100 text-base-content ${
+            menuOpen ? "block" : "hidden"
+          }`}
+        >
+          {navLinks.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `hover:text-[#ffa600] hover:underline underline-offset-4 font-semibold text-lg transition-all duration-200 ${
+                  isActive ? "text-[#ffa600]" : ""
+                }`
+              }
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </NavLink>
+          ))}
+        </div>
       </header>
     </div>
   );
