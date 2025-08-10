@@ -9,6 +9,7 @@ const ChoseUs = () => {
       <h2 className="text-3xl md:text-4xl text-center my-12 font-semibold">
         Why Choose Us
       </h2>
+      
       <div className="grid grid-cols-1 md:grid-cols-3 text-center items-center gap-5 basis-1/3">
       {/* card 1 */}
         <div className="bg-[#000000d6] text-[#dcdcdcce] p-10 rounded-md">

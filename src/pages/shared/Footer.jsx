@@ -27,9 +27,9 @@ const Footer = () => {
           <h4 className="text-lg">Noida, Uttar Pradesh</h4>
           <h5 className="text-lg">+91 123456789</h5>
           <div className="flex gap-4 text-2xl md:text-4xl  mt-2">
-            <FaInstagram />
-            <IoLogoFacebook />
-            <FaLinkedin />
+            <a href="https://www.instagram.com/" target="_blank"><FaInstagram /></a>
+            <a href="https://www.facebook.com/" target="_blank"><IoLogoFacebook /></a>
+            <a href="https://www.linkedin.com/" target="_blank"><FaLinkedin /></a>
           </div>
         </div>
 
@@ -44,6 +44,7 @@ const Footer = () => {
           <LinkSection
             links={["Home game", "About last", "Contact asd", "Blog"]}
           />
+          
         </div>
       </div>
     </div>
