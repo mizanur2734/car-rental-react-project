@@ -8,7 +8,7 @@ const OurClient = () => {
   return (
     <div className="roboto-serif-font md:px-8 px-4 mx-auto py-4">
       <h2 className="text-3xl md:text-4xl text-center font-semibold">
-        Why Choose Us
+        What Our Clients Say About Us
       </h2>
       <p className="text-center mt-2">“I had a great experience with this car rental service. Highly recommended!”</p>
       {/*  */}

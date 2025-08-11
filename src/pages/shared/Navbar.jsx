@@ -25,10 +25,10 @@ const Navbar = () => {
   }, [theme]);
 
   const navLinks = [
-    { name: "Product", to: "/product" },
-    { name: "Service", to: "/service" },
-    { name: "Pricing", to: "/pricing" },
-    { name: "Contact", to: "/contact" },
+    { name: "home", to: "/home", type: "route" },
+    { name: "about", to: "#about", type: "anchor" },
+    { name: "service", to: "/service", type: "route" },
+    { name: "pricing", to: "/pricing", type: "route" },
   ];
 
   return (
@@ -42,19 +42,29 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex gap-10 items-center">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.to}
-                to={link.to}
-                className={({ isActive }) =>
-                  `hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200 ${
-                    isActive ? "text-[#ffa600]" : ""
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
+            {navLinks.map((link) =>
+              link.type === "anchor" ? (
+                <a
+                  key={link.to}
+                  href={link.to}
+                  className="hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200"
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <NavLink
+                  key={link.to}
+                  to={link.to}
+                  className={({ isActive }) =>
+                    `hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200 ${
+                      isActive ? "text-[#ffa600]" : ""
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              )
+            )}
           </div>
 
           {/* Right Side */}
@@ -67,9 +77,6 @@ const Navbar = () => {
                 onChange={handleThemeChange}
                 checked={theme === "night"}
               />
-              {/* <span className="text-sm hidden md:inline">
-                {theme === "night" ? "Dark" : "Light"}
-              </span> */}
             </label>
 
             {/* Sign In */}
@@ -80,9 +87,17 @@ const Navbar = () => {
             {/* Mobile Menu Icon */}
             <div className="md:hidden">
               {menuOpen ? (
-                <RxCross2 onClick={toggleMenu} size={28} className="cursor-pointer" />
+                <RxCross2
+                  onClick={toggleMenu}
+                  size={28}
+                  className="cursor-pointer"
+                />
               ) : (
-                <CiMenuFries onClick={toggleMenu} size={28} className="cursor-pointer" />
+                <CiMenuFries
+                  onClick={toggleMenu}
+                  size={28}
+                  className="cursor-pointer"
+                />
               )}
             </div>
           </div>
@@ -94,20 +109,31 @@ const Navbar = () => {
             menuOpen ? "block" : "hidden"
           }`}
         >
-          {navLinks.map((link) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              className={({ isActive }) =>
-                `hover:text-[#ffa600] hover:underline underline-offset-4 font-semibold text-lg transition-all duration-200 ${
-                  isActive ? "text-[#ffa600]" : ""
-                }`
-              }
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
-            </NavLink>
-          ))}
+          {navLinks.map((link) =>
+            link.type === "anchor" ? (
+              <a
+                key={link.to}
+                href={link.to}
+                onClick={() => setMenuOpen(false)}
+                className="hover:text-[#ffa600] hover:underline underline-offset-4 font-semibold text-lg transition-all duration-200"
+              >
+                {link.name}
+              </a>
+            ) : (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className={({ isActive }) =>
+                  `hover:text-[#ffa600] hover:underline underline-offset-4 font-semibold text-lg transition-all duration-200 ${
+                    isActive ? "text-[#ffa600]" : ""
+                  }`
+                }
+              >
+                {link.name}
+              </NavLink>
+            )
+          )}
         </div>
       </header>
     </div>

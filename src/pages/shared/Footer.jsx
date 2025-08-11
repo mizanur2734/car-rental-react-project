@@ -44,7 +44,7 @@ const Footer = () => {
           <LinkSection
             links={["Home game", "About last", "Contact asd", "Blog"]}
           />
-          
+
         </div>
       </div>
     </div>
