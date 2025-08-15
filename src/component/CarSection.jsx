@@ -8,7 +8,12 @@ const CarSection = () => {
             </h2>
             <p className="text-center mt-2">Discover smart, stylish, and high-performance cars—all in one place. Find your perfect ride today.
             </p>
-
+            <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4'>
+                <div className="">1</div>
+                <div className="">2</div>
+                <div className="">3</div>
+                <div className="">4</div>
+            </div>
         </div>
     );
 };
