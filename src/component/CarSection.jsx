@@ -15,6 +15,8 @@ const CarSection = () => {
                 <div className="">5</div>
                 <div className="">6</div>
                 <div className="">7</div>
+                <div className="">7</div>
+                <div className="">7</div>
 
                 <img className='bg-whi' src="" alt="" />
             </div>
