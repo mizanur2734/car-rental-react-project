@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <h1 className='h-10'>Plant Website</h1>
+      <h1 className='h-'>Plant Website</h1>
     </>
   )
 }
