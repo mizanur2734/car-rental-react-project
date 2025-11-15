@@ -47,8 +47,7 @@ const Navbar = () => {
                 <a
                   key={link.to}
                   href={link.to}
-                  className="hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200"
-                >
+                  className="hover:text-[#ffa600] hover:underline underline-offset-4 font-bold text-xl transition-all duration-200">
                   {link.name}
                 </a>
               ) : (
