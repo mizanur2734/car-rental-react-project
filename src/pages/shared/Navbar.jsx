@@ -75,7 +75,8 @@ const Navbar = () => {
                 className="toggle theme-controller"
                 onChange={handleThemeChange}
                 checked={theme === "night"}
-              />
+                
+                />
             </label>
 
             {/* Sign In */}
