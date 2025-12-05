@@ -106,9 +106,7 @@ const Navbar = () => {
         {/* Mobile Dropdown Menu */}
         <div
           className={`md:hidden flex flex-col gap-4 px-4 py-4 transition-all bg-base-100 text-base-content ${
-            menuOpen ? "block" : "hidden"
-          }`}
-        >
+            menuOpen ? "block" : "hidden"}`}>
           {navLinks.map((link) =>
             link.type === "anchor" ? (
               <a
