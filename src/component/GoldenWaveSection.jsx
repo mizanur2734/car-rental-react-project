@@ -34,6 +34,7 @@ const GoldenWaveSection = () => {
           className="h-12 cursor-pointer"
         />
       </div>
+      
     </section>
     </div>
   );
